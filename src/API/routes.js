@@ -43,7 +43,7 @@ const loginUser = async data => {
     // You can log ▲▲▲ the result
     // here ▼▼▼ to view the json object before returning it
     console.log(result)
-    return result
+    return result.success === false ? alert(result.error.message) : result
   } catch (err) {
     console.error(err)
   }
