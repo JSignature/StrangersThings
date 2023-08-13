@@ -1,4 +1,4 @@
-import { StrictMode } from 'react'
+import { StrictMode, useState } from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 
@@ -8,6 +8,7 @@ import Profile from './components/Profile'
 import Login from './components/Login'
 import Register from './components/Register'
 
+// const [token, setToken] = useState('')
 ReactDOM.createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
