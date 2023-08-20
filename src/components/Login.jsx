@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { loginUser } from '../API/routes'
+import NavBar from './NavBar'
 
 const Login = () => {
   const [username, setUsername] = useState('')
@@ -25,6 +26,7 @@ const Login = () => {
 
   return (
     <>
+      <NavBar />
       <form onSubmit={e => handleSubmit(e)}>
         <label>
           Username:

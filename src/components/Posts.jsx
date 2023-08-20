@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { getAllPosts } from '../API/routes'
 import { useLocation } from 'react-router-dom'
+import NavBar from './NavBar'
 
 const Posts = () => {
   const [posts, setPosts] = useState([])
@@ -19,6 +20,7 @@ const Posts = () => {
 
   return (
     <>
+      <NavBar />
       {isLoggedIn ? <h1>The user is logged in</h1> : <h2>Please log in</h2>}
 
       <div>

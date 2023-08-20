@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { registerUser } from '../API/routes'
 import { useNavigate } from 'react-router-dom'
+import NavBar from './NavBar'
 
 const Register = () => {
   const [username, setUsername] = useState('')
@@ -26,6 +27,7 @@ const Register = () => {
 
   return (
     <>
+      <NavBar />
       <form onSubmit={e => handleSubmit(e)}>
         <label>
           Username:
