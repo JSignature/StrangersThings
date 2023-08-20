@@ -30,6 +30,27 @@ const registerUser = async data => {
     console.error(err)
   }
 }
+const postItem = async (data, token) => {
+  console.log('data:', data, 'token:', token)
+  console.log(JSON.stringify(data))
+  try {
+    const response = await fetch(`${baseURL}/posts`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(data),
+    })
+    const result = await response.json()
+    // You can log ▲▲▲ the result
+    // here ▼▼▼ to view the json object before returning it
+    console.log(result)
+    return result
+  } catch (err) {
+    console.error(err)
+  }
+}
 const loginUser = async data => {
   try {
     const response = await fetch(`${baseURL}/users/login`, {
@@ -49,4 +70,4 @@ const loginUser = async data => {
   }
 }
 
-export { getAllPosts, registerUser, loginUser }
+export { getAllPosts, registerUser, loginUser, postItem }
