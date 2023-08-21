@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { postItem } from '../API/routes'
 
-const Form = () => {
+const Form = ({ newItem }) => {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [price, setPrice] = useState('')
@@ -20,7 +20,8 @@ const Form = () => {
         willDeliver,
       },
     }
-    postItem(data, token)
+    await postItem(data, token)
+    !newItem()
   }
 
   return (
