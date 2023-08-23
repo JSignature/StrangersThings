@@ -70,4 +70,23 @@ const loginUser = async data => {
   }
 }
 
-export { getAllPosts, registerUser, loginUser, postItem }
+const deletePost = async (id, token) => {
+  try {
+    const response = await fetch(`${baseURL}/posts/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    const result = await response.json()
+    // You can log ▲▲▲ the result
+    // here ▼▼▼ to view the json object before returning it
+    console.log(result)
+    return result.success ? alert('Item deleted') : alert(result.error.message)
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+export { getAllPosts, registerUser, loginUser, postItem, deletePost }

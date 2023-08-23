@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { postItem } from '../API/routes'
 
-const Form = ({ newItem }) => {
+const Form = ({ triggerEvent }) => {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [price, setPrice] = useState('')
@@ -21,7 +21,7 @@ const Form = ({ newItem }) => {
       },
     }
     await postItem(data, token)
-    !newItem()
+    triggerEvent(Math.random())
   }
 
   return (

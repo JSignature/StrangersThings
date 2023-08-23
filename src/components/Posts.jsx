@@ -10,7 +10,7 @@ import PostDetails from './PostDetails'
 const Posts = () => {
   const [posts, setPosts] = useState([])
   const [isLoggedIn, setIsLoggedIn] = useState('')
-  const [newItem, setNewItem] = useState(false)
+  const [triggerEvent, setTriggerEvent] = useState(1)
   const [modalIsOpen, setIsOpen] = React.useState(false)
   const [selectedItem, setSelectedItem] = useState([])
 
@@ -23,7 +23,7 @@ const Posts = () => {
     setIsLoggedIn(localStorage.getItem('token'))
 
     fetchData()
-  }, [location, newItem])
+  }, [location, triggerEvent])
 
   //modal
   function openModal(id) {
@@ -62,12 +62,16 @@ const Posts = () => {
         >
           <button onClick={closeModal}>close</button>
 
-          <PostDetails data={selectedItem} />
+          <PostDetails
+            data={selectedItem}
+            closeModal={closeModal}
+            triggerEvent={setTriggerEvent}
+          />
         </Modal>
       </div>
 
       {isLoggedIn ? (
-        <Form newItem={setNewItem} />
+        <Form triggerEvent={setTriggerEvent} />
       ) : (
         <h2>Please log in to add an item</h2>
       )}
@@ -76,8 +80,7 @@ const Posts = () => {
         {posts.map(post => (
           <div key={post._id}>
             <p>{post.title}</p>
-            <p>{post._id}</p>
-            <button onClick={() => openModal(post._id)}>Open Modal</button>
+            <button onClick={() => openModal(post._id)}>Details</button>
           </div>
         ))}
       </div>
