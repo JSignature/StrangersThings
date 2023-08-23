@@ -40,6 +40,7 @@ const NavBar = () => {
           {isLoggedIn ? 'Log Out' : 'Log In'}
         </button>
       )}
+      <h1>Work in Progress, switching to Capstone</h1>
     </nav>
   )
 }
